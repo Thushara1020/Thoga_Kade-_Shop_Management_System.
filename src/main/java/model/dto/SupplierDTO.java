@@ -1,6 +1,6 @@
 package model.dto;
 
-public class SupplierDTo {
+public class SupplierDTO {
     private String supplierId;
     private String name;
     private String companyName;
@@ -10,7 +10,7 @@ public class SupplierDTo {
     private String postalCode;
     private String phone;
 
-    public SupplierDTo(String supplierId, String name, String companyName, String address, String city, String province, String postalCode, String phone) {
+    public SupplierDTO(String supplierId, String name, String companyName, String address, String city, String province, String postalCode, String phone) {
         this.supplierId = supplierId;
         this.name = name;
         this.companyName = companyName;
@@ -25,7 +25,7 @@ public class SupplierDTo {
         return supplierId;
     }
 
-    public void setSupplierId(String supplierId) {
+    public void setSupplierID(String supplierId) {
         this.supplierId = supplierId;
     }
 
@@ -41,7 +41,7 @@ public class SupplierDTo {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
+    public void setCompany(String companyName) {
         this.companyName = companyName;
     }
 
@@ -81,13 +81,13 @@ public class SupplierDTo {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhoneNo(String phone) {
         this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "SupplierDTo{" +
+        return "SupplierDTO{" +
                 "supplierId='" + supplierId + '\'' +
                 ", name='" + name + '\'' +
                 ", companyName='" + companyName + '\'' +
@@ -98,4 +98,7 @@ public class SupplierDTo {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
+
+
 }
