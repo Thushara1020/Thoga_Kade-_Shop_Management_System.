@@ -2,8 +2,13 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DashboardFormController {
 
@@ -15,11 +20,21 @@ public class DashboardFormController {
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/custome_form.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setTitle("CustomerDTO Form");
+        stage.show();
 
     }
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
 
     }
 
