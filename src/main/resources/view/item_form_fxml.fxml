@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to bottom right, #eef2f3, #dfe9f3);" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemFormController">
+
+    <children>
+        <!-- 🔹 Sidebar -->
+        <VBox alignment="TOP_CENTER" prefHeight="710.0" prefWidth="230" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #2f3640, #3b3b98); -fx-padding: 25;">
+            <children>
+
+                <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Thoga Kade" textFill="white" />
+
+                <!-- Logo -->
+                <ImageView fitHeight="139.0" fitWidth="140.0">
+                    <image>
+                        <Image url="@../img/logo.png" />
+                    </image>
+                </ImageView>
+
+                <Separator style="-fx-background-color: white;" />
+
+                <Button onAction="#btnDashboardOnAction" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15;" text="🏠  Dashboard" />
+                <Button onAction="#btnCustomerOnAction" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15;" text="👥  Customers" />
+                <Button onAction="#btnItemOnAction" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15;" text="📦  Items" />
+                <Button onAction="#btnSupplierOnAction" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15;" text="🚚  Suppliers" />
+                <Button onAction="#btnEmployeeOnAction" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10 0 10 15;" text="💼  Employees" />
+
+                <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                    <Button onAction="#btnLogoutOnAction" style="-fx-background-color: #e84118; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 25 8 25;" text="🚪 Logout" />
+                </VBox>
+
+            </children>
+        </VBox>
+
+        <!-- 🔹 Top Bar -->
+        <HBox alignment="CENTER_RIGHT" layoutX="230" prefHeight="60" prefWidth="868.0" style="-fx-background-color: #4e73df; -fx-padding: 0 20 0 20;">
+            <children>
+                <Label fx:id="lblTitle" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;" text="Item Management   " HBox.hgrow="ALWAYS" />
+                <Button onAction="#btnSetiting" style="-fx-background-color: white; -fx-text-fill: #4e73df; -fx-background-radius: 100; -fx-font-size: 16; -fx-font-weight: bold;" text="⚙️" />
+            </children>
+        </HBox>
+
+        <!-- 🔹 Main Content Area -->
+        <AnchorPane fx:id="mainContent" layoutX="230" layoutY="60" prefHeight="624.0" prefWidth="864.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3); -fx-padding: 20;">
+            <children>
+                <!-- Title Label -->
+                <Label layoutX="25" layoutY="20" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2b3a55;" text="🛒 Item Management" />
+
+                <!-- Input Section -->
+                <VBox layoutX="25" layoutY="70" spacing="10">
+                    <children>
+                        <HBox spacing="10">
+                            <Label prefWidth="100" text="Item ID:" />
+                            <TextField fx:id="txtItemId" prefWidth="250" promptText="Enter Item ID" />
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label prefWidth="100" text="Description:" />
+                            <TextField fx:id="txtDescription" prefWidth="250" promptText="Enter Item Description" />
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label prefWidth="100" text="Category:" />
+                            <TextField fx:id="txtCategory" prefWidth="250" promptText="Enter Category" />
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label prefWidth="100" text="Quantity:" />
+                            <TextField fx:id="txtQty" prefWidth="250" promptText="Enter Quantity" />
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label prefWidth="100" text="Unit Price:" />
+                            <TextField fx:id="txtPrice" prefWidth="250" promptText="Enter Unit Price" />
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                </VBox>
+
+                <!-- Buttons -->
+                <HBox layoutX="25" layoutY="330" spacing="15" />
+
+                <!-- Table Section -->
+                <TableView fx:id="tblItems" layoutX="26.0" layoutY="260.0" prefHeight="350" prefWidth="802.0">
+                    <columns>
+                        <TableColumn fx:id="colItemId" prefWidth="136.0" text="Item ID" />
+                        <TableColumn fx:id="colDescription" prefWidth="220.0" text="Description" />
+                        <TableColumn fx:id="colCategory" prefWidth="187.0" text="Category" />
+                        <TableColumn fx:id="colQty" prefWidth="124.0" text="Qty" />
+                        <TableColumn fx:id="colPrice" prefWidth="134.0" text="Unit Price" />
+                    </columns>
+                </TableView>
+                 <Button layoutX="482.0" layoutY="138.0" onAction="#btnAddItem" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Add Item">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+                 <Button layoutX="563.0" layoutY="138.0" onAction="#btnUpdateItem" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Update">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+                 <Button layoutX="636.0" layoutY="138.0" onAction="#btnDeleteItem" style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Delete">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+                 <Button layoutX="703.0" layoutY="138.0" onAction="#btnClearItem" style="-fx-background-color: #64748b; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Clear">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

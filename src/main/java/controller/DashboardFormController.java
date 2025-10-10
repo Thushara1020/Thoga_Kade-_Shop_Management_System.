@@ -26,16 +26,13 @@ public class DashboardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        stage.setTitle("CustomerDTO Form");
+        stage.setTitle("DashBoard Customer Form");
         stage.show();
 
     }
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
-        Stage stage = (Stage) mainContent.getScene().getWindow();
-        stage.close();
-
     }
 
     @FXML
@@ -45,11 +42,21 @@ public class DashboardFormController {
 
     @FXML
     void btnItemOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/item_form_fxml.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setTitle("Item Form");
+        stage.show();
 
     }
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) {
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
 
     }
 
