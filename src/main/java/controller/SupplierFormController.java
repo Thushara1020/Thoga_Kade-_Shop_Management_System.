@@ -151,6 +151,8 @@ public class SupplierFormController implements Initializable {
 
     @FXML
     void btnItemOnAction(ActionEvent event) {
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
 
     }
 

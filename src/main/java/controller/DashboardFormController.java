@@ -37,6 +37,14 @@ public class DashboardFormController {
 
     @FXML
     void btnEmployeeOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Employee.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setTitle("Employee Form");
+        stage.show();
 
     }
 
