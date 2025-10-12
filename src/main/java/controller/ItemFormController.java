@@ -118,14 +118,8 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard_form_fxml.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setTitle("DashBoard Form");
-        stage.show();
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
 
     }
 

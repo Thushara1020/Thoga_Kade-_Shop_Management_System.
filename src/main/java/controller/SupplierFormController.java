@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.dto.SupplierDTO;
 
 import java.net.URL;
@@ -120,6 +121,8 @@ public class SupplierFormController implements Initializable {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -164,7 +167,6 @@ public class SupplierFormController implements Initializable {
 
     @FXML
     void btnSupplierOnAction(ActionEvent event) {
-        mainContent.getScene().getWindow().hide();
 
     }
 
