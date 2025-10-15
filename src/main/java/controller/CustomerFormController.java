@@ -188,6 +188,14 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_form_fxml.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setTitle("Login Form");
+        stage.show();
 
     }
 
