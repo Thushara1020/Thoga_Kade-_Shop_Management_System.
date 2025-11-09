@@ -84,7 +84,6 @@ public class EmployeeFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-
     }
 
     @FXML

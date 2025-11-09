@@ -261,7 +261,7 @@ public class CustomerFormController implements Initializable {
 
         tblCustomers.setItems(customerDTOS);
 
-        // Auto fill text fields on row select
+
         tblCustomers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 txtCustID.setText(newValue.getCustID());

@@ -33,6 +33,8 @@ public class DashboardFormController {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
