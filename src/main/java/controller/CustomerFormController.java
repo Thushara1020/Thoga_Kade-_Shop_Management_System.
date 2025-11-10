@@ -15,21 +15,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.dto.CustomerDTO;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
     ObservableList<CustomerDTO> customerDTOS = FXCollections.observableArrayList(
-            new CustomerDTO("C001","Mr.","Thushara","2001/04/15",10000.00,"Pannipitiya","Maharagama","Western","10120"),
-            new CustomerDTO("C002","Ms.","Kumari","2000/08/22",15000.00,"Colombo","Colombo","Western","01500"),
-            new CustomerDTO("C003","Mr.","Nimal","1998/12/05",20000.00,"Kandy","Kandy","Central","20000"),
-            new CustomerDTO("C004","Ms.","Sunethra","1995/03/30",25000.00,"Galle","Galle","Southern","80000"),
-            new CustomerDTO("C005","Mr.","Ruwan","1992/07/18",30000.00,"Jaffna","Jaffna","Northern","40000"),
-            new CustomerDTO("C006","Ms.","Anusha","1999/11/11",35000.00,"Matara","Matara","Southern","81000"),
-            new CustomerDTO("C007","Mr.","Saman","1997/05/25",40000.00,"Negombo","Negombo","Western","11500"),
-            new CustomerDTO("C008","Ms.","Dilani","2001/09/09",45000.00,"Kurunegala","Kurunegala","North Western","60000")
+//            new CustomerDTO("C001","Mr.","Thushara","2001/04/15",10000.00,"Pannipitiya","Maharagama","Western","10120"),
+//            new CustomerDTO("C002","Ms.","Kumari","2000/08/22",15000.00,"Colombo","Colombo","Western","01500"),
+//            new CustomerDTO("C003","Mr.","Nimal","1998/12/05",20000.00,"Kandy","Kandy","Central","20000"),
+//            new CustomerDTO("C004","Ms.","Sunethra","1995/03/30",25000.00,"Galle","Galle","Southern","80000"),
+//            new CustomerDTO("C005","Mr.","Ruwan","1992/07/18",30000.00,"Jaffna","Jaffna","Northern","40000"),
+//            new CustomerDTO("C006","Ms.","Anusha","1999/11/11",35000.00,"Matara","Matara","Southern","81000"),
+//            new CustomerDTO("C007","Mr.","Saman","1997/05/25",40000.00,"Negombo","Negombo","Western","11500"),
+//            new CustomerDTO("C008","Ms.","Dilani","2001/09/09",45000.00,"Kurunegala","Kurunegala","North Western","60000")
+
     );
 
     @FXML
@@ -249,6 +252,12 @@ public class CustomerFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CustomerDB", "root", "TB20010415");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         colCustID.setCellValueFactory(new PropertyValueFactory<>("custID"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));

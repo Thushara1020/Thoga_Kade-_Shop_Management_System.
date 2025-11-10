@@ -23,7 +23,7 @@ public class LoginFormController {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-        if (username.equals("Thushara") && password.equals("1234")) {
+        if (username.equals("admin") && password.equals("1234")) {
             Stage stage = new Stage();
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard_form_fxml.fxml"))));
