@@ -17,9 +17,7 @@ import javafx.stage.Stage;
 import model.dto.CustomerDTO;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
@@ -254,19 +252,31 @@ public class CustomerFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CustomerDB", "root", "TB20010415");
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Customers");
+            connection.prepareStatement("SELECT * FROM Customers");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                CustomerDTO customerDTO = new CustomerDTO(
+                        resultSet.getString("CostomerID"),
+                        resultSet.getString("Title"),
+                        resultSet.getString("Name"),
+                        resultSet.getString("BirthofDate"),
+                        resultSet.getDouble("Salary"),
+                        resultSet.getString("Address"),
+                        resultSet.getString("City"),
+                        resultSet.getString("Province"),
+                        resultSet.getString("PostalCode")
+                );
+                System.out.println(customerDTO);
+            }
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        colCustID.setCellValueFactory(new PropertyValueFactory<>("custID"));
-        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colBOD.setCellValueFactory(new PropertyValueFactory<>("bod"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
-        colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
-        colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
         tblCustomers.setItems(customerDTOS);
 
